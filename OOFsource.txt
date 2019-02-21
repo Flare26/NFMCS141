@@ -1,6 +1,6 @@
-<<<<<<< HEAD
+
 //A shitty game by Nathan
-package Hello;
+
 import java.util.Scanner;
 public class oof {
 private static Scanner seebot;
