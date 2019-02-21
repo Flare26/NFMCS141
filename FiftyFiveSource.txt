@@ -1,0 +1,52 @@
+<<<<<<< HEAD
+//Nathan Frazier p260 #55
+package Hello;
+import java.util.Scanner ;
+public class programfiftyfive {
+private static Scanner seebot;
+public static void main(String[] args) {
+	seebot = new Scanner(System.in); 
+int operand1;
+static int constant1;
+static int constant2;
+static int constant3;
+System.out.println()
+String opstr1;
+Switch(operand1)
+{
+	case 1
+}
+	
+	
+	
+	
+	
+	
+}
+=======
+//Nathan Frazier p260 #55
+package Hello;
+import java.util.Scanner ;
+public class programfiftyfive {
+private static Scanner seebot;
+public static void main(String[] args) {
+	seebot = new Scanner(System.in); 
+int operand1;
+static int constant1;
+static int constant2;
+static int constant3;
+System.out.println()
+String opstr1;
+Switch(operand1)
+{
+	case 1
+}
+	
+	
+	
+	
+	
+	
+}
+>>>>>>> 381f0248f586488445807eb01647f08af1c708af
+}
