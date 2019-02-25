@@ -1,26 +1,26 @@
-//A shitty game by Nathan
+//A shitty game by Nathan Frazier
 package programs;
 import java.util.Scanner;
 public class oof {
-public static void main(String[]args) 
+public static void main(String[] args) 
 {
 	Scanner seebot;
 	seebot = new Scanner(System.in); //Input created and values loaded
 	double HP = 10; //You are supposed to have 10 HP but the enemy literally doesn't atta
 	double EPLVL = 2;
+	int DMG = 2;
 	int EHP = (int) ((EPLVL + 4)*2) ;
-	int SMAX = 15 ; //Max HP (shields)
-	int DMG = 2 ; //Main damage
-	double EDMG = EHP - (EP) ; //enemy damage *CHANGES I PROGNGEAN
+	int SMAX = 15 ; 
+	double EDMG = DMG + EPLVL ; 
 	int mod = 2 ; //Start with 0
-	int s;
+	double s = (Math.pow(EDMG, 3))/2;
 	
 	String estatus = "DETECTED" ;
 	
 	
 		
 	while (DMG <= EHP) { //once this loop is false, the enemy is defeated
-		System.out.println("[ENEMY SHIP "+estatus+"]");
+		System.out.println("[ENEMY SHIP "+estatus+"] \n ["+s+" SHIELDS]");
 		System.out.println("-Enemy PLVL "+EPLVL+"-") ; 
 		System.out.println("[1] Fire Main Cannon") ; 
 		System.out.println("[2] Repair") ;
@@ -41,10 +41,10 @@ public static void main(String[]args)
 			 if (mod > 0) {
 				 
 				 
-				int s1 = 0;
+				double s1 = 0;
 				 HP = HP + s1 ;
 				 if (HP < SMAX) {
-					 s1 = SMAX - HP;
+					 s1 =  SMAX - HP;
 					 HP = HP + s1;
 					 System.out.println("[SHIP REPAIRED: "+ HP + " HULL]");
 					 mod = mod - 1 ;
@@ -75,6 +75,7 @@ public static void main(String[]args)
 		if (HP >= 1) {
 			System.out.println("{you survived}");
 		}
+		seebot.close();
 		System.exit(0);
 	}
 }
