@@ -14,7 +14,10 @@ public static void main(String[] args)
 	double EDMG = DMG + EPLVL ; 
 	int mod = 2 ; //Start with 0
 	double s = (Math.pow(EDMG, 3))/2;
-	
+ while (HP>=1)
+ {
+	 
+
 	String estatus = "DETECTED" ;
 	
 	
@@ -78,5 +81,9 @@ public static void main(String[] args)
 		seebot.close();
 		System.exit(0);
 	}
+ } //YOU ARE ALIVE UP TO THIS POINT 
+ 
+ System.out.println("{Your ship has exploded}");
+ System.exit(0);
 }
 }

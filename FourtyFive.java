@@ -3,8 +3,6 @@ import java.io.*;
 import java.util.*;
 
 public class FourtyFive {
-	public static void main(String[] args)
-	{
 	public Scanner z;
 	public void openFile () {
 		try {
@@ -68,6 +66,6 @@ public class FourtyFive {
 	public void closeFile() {
 		z.close();
 		}
-	}
+
 }
 //Nathan frazier fourtyfive, pointed to by mainfourtyfive.java and reads info.txt
