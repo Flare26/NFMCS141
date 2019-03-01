@@ -4,17 +4,19 @@ import java.util.Scanner;
 public class oof {
 public static void main(String[] args) 
 {
+
 	Scanner seebot;
 	seebot = new Scanner(System.in); //Input created and values loaded
 	double HP = 10; //You are supposed to have 10 HP but the enemy literally doesn't atta
-	double EPLVL = 2;
-	int DMG = 2;
-	int EHP = (int) ((EPLVL + 4)*2) ;
-	int SMAX = 15 ; 
+	int EPLVL = 7;
+	int DMG = 8;
 	double EDMG = DMG + EPLVL ; 
+	int EHP = (EPLVL*2) ;
+	int SMAX = 15 ; 
 	int mod = 2 ; //Start with 0
-	double s = (Math.pow(EDMG, 3))/2;
- while (HP>=1)
+	double s = (Math.pow(EDMG, 2))/2;
+
+ 
  {
 	 
 
@@ -23,17 +25,26 @@ public static void main(String[] args)
 	
 		
 	while (DMG <= EHP) { //once this loop is false, the enemy is defeated
-		System.out.println("[ENEMY SHIP "+estatus+"] \n ["+s+" SHIELDS]");
+		System.out.println("[ENEMY SHIP "+estatus+", "+EHP+" HULL] \n ["+s+" SHIELDS]");
 		System.out.println("-Enemy PLVL "+EPLVL+"-") ; 
 		System.out.println("[1] Fire Main Cannon") ; 
 		System.out.println("[2] Repair") ;
 		int input = seebot.nextInt() ; 
+		
 		if (input == 1 ) {
+			if (s > 0) {
+				EHP = EHP + DMG;
+				s -= DMG;
+			}
 		EHP = EHP - DMG ;
 		HP = HP - EDMG ;
+		if (HP >= 1) {
 		System.out.println("Your cannon dealt "+DMG+" damage. The enemy has "+EHP+" HP left.") ;
 		System.out.println("[DAMAGE DETECTED: "+EDMG+", "+HP+"/"+SMAX+" HULL REMAINING]") ;
-		
+			} else {
+				System.out.println("[DAMAGE DETECTED: "+EDMG+", 0 HULL REMAINING]") ;
+				break;
+			}
       /* Only issue with this is I have to re type every dialogue option. If I can figure out a way
        * to present the same text every turn and just act based on user input, that would be lit
        */
@@ -68,15 +79,20 @@ public static void main(String[] args)
 		 } 
 }
 
-	if (EHP <= DMG) { //defeat condition
+	if (EHP <= 0) { //defeat condition
 		estatus = "DISABLED" ;
 		System.out.println("[ENEMY SHIP: "+estatus+"]");
-		System.out.println("[ENEMY SHIP SUSTAINED CRITICAL DAMAGE]");
+		if (EHP != 0) {
+		System.out.println("[ENEMY SHIP HAS SUSTAINED CRITICAL DAMAGE]");
+		}
+		if (EHP <= 0) {
+			System.out.println("{ENEMY SHIP DESTROYED}");
+		}
 		if (HP <= 0) {
-			System.out.println("{you have died}");
+			System.out.println("{YOU HAVE DIED}");
 		}
 		if (HP >= 1) {
-			System.out.println("{you survived}");
+			System.out.println("{YOU HAVE SURVIVED}");
 		}
 		seebot.close();
 		System.exit(0);
