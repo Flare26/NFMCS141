@@ -8,7 +8,7 @@ public static void main(String[] args)
 	Scanner seebot;
 	seebot = new Scanner(System.in); //Input created and values loaded
 	double HP = 10; //You are supposed to have 10 HP but the enemy literally doesn't atta
-	int EPLVL = 7;
+	int EPLVL = 2;
 	int DMG = 8;
 	double EDMG = DMG + EPLVL ; 
 	int EHP = (EPLVL*2) ;
