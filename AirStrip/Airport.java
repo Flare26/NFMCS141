@@ -3,7 +3,7 @@
    
    Nathan Frazier
 */
-package AirStrip;
+package airstrip;
 public class Airport
 {
   // 1. ***** Define the instance variables  *****
@@ -11,6 +11,7 @@ public class Airport
   //  gates is an integer
   private String airportCode;
   private int gates;
+  
 
   // 2. ***** Write this method *****
   // Default constructor:
@@ -20,7 +21,7 @@ public class Airport
   // function: sets the airportCode to an empty String
   public Airport()
   {
-	airportCode = "unknown";
+	airportCode = "unknown"; //ask
   }
   
   

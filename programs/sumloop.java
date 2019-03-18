@@ -1,6 +1,6 @@
 package programs;
 import java.util.Scanner;
-public class sumloop {
+public class SumLoop {
 
 	public static void main(String[] args) {
 		Scanner seebot = new Scanner(System.in);

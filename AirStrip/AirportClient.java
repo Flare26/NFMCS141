@@ -1,4 +1,4 @@
-package AirStrip;
+package airstrip;
 
 class AirportClient {
 

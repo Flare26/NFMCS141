@@ -1,4 +1,4 @@
-package AirStrip;
+package airstrip;
 
 public class BankAccount {
 /*This account number (long)
@@ -7,10 +7,12 @@ public class BankAccount {
  * The type of bank account (String)
  * These let the constructor use the variables only in this class
  */
+	//These 4 fields get initialized in order a b c d respectively
 	private long aNumber;
 	private double bal;
 	private double iEarned;
 	private String aType;
+	
 	public BankAccount() //parens are default constructor, only initializing non-numeric instance variables
 	{
 		aType = "Checking";
@@ -69,7 +71,7 @@ public class BankAccount {
 	public double deposit(double amount)
 	{
 		if (amount >= 0)
-			bal += amount;
+			bal += amount; //adds balance to amount ant sets amount equal to that new #
 		return bal;
 	}
 	
@@ -77,7 +79,10 @@ public class BankAccount {
 	{
 		if (amount >= 0
 				&& (bal - amount >= 0))
+		{
 			return bal;
+		} else
+		{return bal;}
 	}
 	
 	public String toString()
@@ -90,7 +95,7 @@ public class BankAccount {
 	
 	public boolean equals( Object o )
 	{
-		if ( ! ( o instanceof BankAccount))
+		if ( ! ( o instanceof BankAccount)) //this should always return false (i think)
 			return false;
 		else
 		{
