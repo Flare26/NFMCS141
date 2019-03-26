@@ -1,4 +1,4 @@
-package airstrip;
+package Methods;
 import java.util.Scanner;
 public class BankAccountClient 
 {

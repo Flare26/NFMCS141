@@ -1,4 +1,4 @@
-package airstrip;
+package Methods;
 
 public class BankAccount {
 /*This account number (long)

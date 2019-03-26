@@ -3,7 +3,7 @@
    
    Nathan Frazier
 */
-package airstrip;
+package Methods;
 public class Airport
 {
   // 1. ***** Define the instance variables  *****
