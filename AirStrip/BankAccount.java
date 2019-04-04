@@ -1,3 +1,4 @@
+//Nathan Frazier
 package airstrip;
 
 public class BankAccount {
@@ -15,17 +16,17 @@ public class BankAccount {
 	
 	public BankAccount() //parens are default constructor, only initializing non-numeric instance variables
 	{
-		aType = "Checking";
+		this.aType = "Checking"; //for all new BankAccount type will be Checking.
 	}
 	
 	public BankAccount( long aNumber, double bal,
-			double iEarned, String aType)
+			double iEarned, String aType) //For all new BankAccount these numbers will be expected.
 	{
 		this.aNumber = aNumber; //These bridge the gap between the class and BankAccount instance
 		this.bal = bal;
 		this.iEarned = iEarned;
 	} //Up until this point all of these were private. BankAccount makes them public with 'this'
-	
+	//ACCESSORS
 	public long getAccountNumber() //public so all can see or call
 	{
 		return aNumber;
@@ -43,7 +44,7 @@ public class BankAccount {
 	{
 		return aType;
 	}
-	
+	//MUTATOR
 	public void setAccountNumber(long aNumber)
 	{
 		if (aNumber >= 0)
@@ -71,7 +72,7 @@ public class BankAccount {
 	public double deposit(double amount)
 	{
 		if (amount >= 0)
-			bal += amount; //adds balance to amount ant sets amount equal to that new #
+			this.bal += amount; //adds balance to amount ant sets amount equal to that new #
 		return bal;
 	}
 	
@@ -80,9 +81,12 @@ public class BankAccount {
 		if (amount >= 0
 				&& (bal - amount >= 0))
 		{
+			this.bal = bal - amount;
 			return bal;
 		} else
-		{return bal;}
+		{
+			return bal;
+		}
 	}
 	
 	public String toString()
@@ -93,18 +97,38 @@ public class BankAccount {
 				+ "Account Type: " + aType;
 	}
 	
+	/*
+
+	 
 	public boolean equals( Object o )
 	{
+		BankAccount objBankAccount = (BankAccount) o; //typecast so we can compare values
+		
 		if ( ! ( o instanceof BankAccount)) //this should always return false (i think)
+		{
+			
 			return false;
+			
+		} 
 		else
 		{
-			BankAccount objBankAccount = (BankAccount) o; //typecast so we can compare values
-			if (aNumber == objBankAccount.aNumber
+			
+		}
+		if (aNumber == objBankAccount.aNumber
 					&& Math.abs(bal - objBankAccount.bal)  < 0.0001
 					&& Math.abs(iEarned - objBankAccount.iEarned) < 0.0001
-					&& aType.equals(objBankAccount.aType) ) //Used .equals() since aType is a String
-return true; //This is our boolean return if we are comparing bank accounts
+					&& aType.equals(objBankAccount.aType) 
+					)
+		{
+			return true;
 		}
+					
+					//Used .equals() since aType is a String
+ 
+		}
+		
+		*/
+	
 	}
-}
+	
+

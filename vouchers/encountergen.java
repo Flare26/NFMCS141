@@ -1,4 +1,4 @@
-package vouchersplease;
+package vouchers;
 import java.text.*;
 import java.util.Random;
 public class encountergen {

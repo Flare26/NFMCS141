@@ -27,6 +27,7 @@ public class fibonacci {
 		 num1 = num2;
 		 num2 = SumOfPrevious2;
 	 } while (values >= 1);
+	 seebot.close();
 	}
 
 }

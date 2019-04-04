@@ -2,7 +2,7 @@
 package programs;
 import java.util.Scanner;
 public class AllSquares {
-	
+	static Scanner seebot = new Scanner(System.in);
 	public static void main(String[] args)
 	{
 		double a = 0;
@@ -12,7 +12,7 @@ public class AllSquares {
 		double input = 0;
 		while(SENT == 0)
 		{
-		Scanner seebot = new Scanner(System.in);
+		
 		
 		System.out.println("Please enter an integer > 10") ;
 		input = seebot.nextInt();
@@ -34,9 +34,11 @@ public class AllSquares {
 			{
 				SENTSQR = SENTSQR + 1; //Keeps track of square root ops
 			}
+			
 		}
 		System.out.println("Square root calculations complete, "+counter+" operations performed.");
 		
+		seebot.close();
 		
 		
 		
