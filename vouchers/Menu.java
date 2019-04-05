@@ -1,24 +1,19 @@
 package vouchers;
 import java.util.Scanner;
 public class Menu {
-boolean exit = false;
-private Scanner seebot = new Scanner(System.in);
-private String input;
-private String username = "UNKNOWN";
 
+private Scanner seebot = new Scanner(System.in);
+
+/*
 public static void main( String [] args )
 {
 Menu m0 = new Menu();
 m0.runMenu();
 }
-
+*/
 public void runMenu()
 {
-	while (!exit)
-	{
 		printMenu();
-		int choice = getInput();
-	}
 }
 
 public void printHeader()
@@ -33,23 +28,65 @@ public void printHeader()
 public void printMenu()
 {
 	System.out.println("Please select:"
-			+ "\n{1} Play"
-			+ "\n{2} Load"
-			+ "\n{3} Quit");
+			+ "\n[1] Play"
+			+ "\n[2] Load"
+			+ "\n[3] OPTIONS"
+			+ "\n'Q' Close");
 }
 
-	public static void quit(int z)
+	public static void quit(char x)
 	{
-		System.exit(z);
+		boolean t = (x == 'y');
+		
+		if (t)
+		System.exit(0);
 	}
 	
 
-	private int getInput()
+	public int getInput()
 	{
-		int choice = -1;
-		while (choice < 0 || choice > 2 )
+		System.out.println("Enter Selection : ");
+		char in = seebot.next().charAt(0);
+		
+		while ( in != 'q')
 		{
+		
+		if ( in == '1' || in == '2' || in == '3' )
+		{
+		switch ( in )
+		{
+		
+		case '1' :
+			return 1;
 			
+		case '2' :
+		return 2;
+		
+		case '3' :
+		return 3;
+		
+		default:
+			System.out.println("Try again");
+			return -1;
 		}
+		} else
+		{
+			System.out.println("Try again");
+			return -1;
+		}
+		
+		}
+		
+		//if in == 'q'
+		
+		System.out.println("Quit? y/n");
+		in = seebot.next().toLowerCase().charAt(0);
+		
+		if ( in == 'y' )
+			Menu.quit(in);
+		return -1;
+			
 	}
+	
+
 }
