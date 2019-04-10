@@ -3,25 +3,41 @@ import java.util.Scanner;
 public class Menu02 {
 	
 private static Scanner seebot = new Scanner (System.in);
-private char input;
-
+private static char input;
+public static int gameday;
 	public static void main(String[] args) {
 		Menu02 menu02 = new Menu02();
-		char in = menu02.input;
-		
-		
+
 		menu02.printHeader();
-		menu02.printMenu();
-		do {
-			
-			menu02.input = menu02.getInput();
-			
-			if ( in == 'q' )
-				System.exit(0);
-				
+		menu02.startScreen();
+		
+		String choice = seebot.next().toLowerCase(); //Takes input and stores first as char
+		input = choice.charAt(0);
+		
+		if ( input != 'q') {
+					menu02.printMenu();
+					choice = seebot.next().toLowerCase();
+					input = choice.charAt(0);
 					
-				
-			} while ( in != 'q' );
+				switch ( input )
+				{
+				case '1' :
+					menu02.startGame();
+					break;
+				case '2' :
+					menu02.loadGame();
+					break;
+				case '3' :
+					menu02.optionStart();
+					break;
+				case 'q' :
+					System.out.println("Breaking...");
+					break;
+					
+				default :
+					System.out.println( "Try again..." );
+				}
+			} else
 		System.out.println("closing...");
 	}
 
@@ -34,13 +50,38 @@ private char input;
 		System.out.println("____________________");
 	}
 	
+	public void startScreen()
+	{
+		System.out.println("Please select:"
+				+ "\n[1] START"
+				+ "\n'Q' QUIT"
+				+ "\n________" );
+	}
+	
+	public void startGame()
+	{
+		System.out.println("Starting...");
+		Vouchers01 game = new Vouchers01();
+		game.introVouchers();
+	}
+	
+	public void loadGame()
+	{
+		System.out.println("Loading...");
+	}
+	
+	public void optionStart()
+	{
+		System.out.println("Options...");
+	}
+	
 	public void printMenu()
 	{
 		System.out.println("Please select:"
 				+ "\n[1] Play"
 				+ "\n[2] Load"
 				+ "\n[3] OPTIONS"
-				+ "\n'Q' Close");
+				+ "\n'Q' Quit");
 	}
 	
 	public char getInput()
