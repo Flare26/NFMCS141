@@ -1,4 +1,4 @@
-package Methods;
+package methodpractice;
 import java.util.Scanner;
 public class BankAccountClient 
 {

@@ -1,7 +1,7 @@
 /* WeatherForecast Class
    Anderson, Franceschi
 */
-package Methods;
+package methodpractice;
 public class WeatherForecast
 {
   private double temperature; // in Fahrenheit

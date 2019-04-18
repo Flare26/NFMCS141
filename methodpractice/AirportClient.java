@@ -1,4 +1,4 @@
-package Methods;
+package methodpractice;
 
 class AirportClient {
 

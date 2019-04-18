@@ -1,4 +1,4 @@
-package Methods;
+package methodpractice;
 
 public class BankAccount {
 /*This account number (long)

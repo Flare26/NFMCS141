@@ -2,7 +2,7 @@ package shipgame;
 import java.lang.Math.*;
 public class PlayerShip {
 
-	public String PLAYERNAME;
+	public int LEVEL;
 	public double shields;
 	public double hull;
 	public int weaponselect; // 1 cannon 2 EMP
@@ -10,21 +10,20 @@ public class PlayerShip {
 	
 	public static void main ( String [] args )
 	{
-		PlayerShip p1 = new PlayerShip("TL-38", 1 );
+		PlayerShip p1 = new PlayerShip( 2, 25 );
 		System.out.println( p1.toString() );
 		
 	}
 	
-	public PlayerShip(String name, int level)
+	public PlayerShip(int level, double exp)
 	{
 		if ( level < 1 )
 		{
 			System.out.println("level < 1 set to 1 //15");
-			level = 1;
+			LEVEL = 1;
 		}
 	
-		
-		PLAYERNAME = name;
+		LEVEL = level;
 		hull = Math.log(level) + 10;
 		
 	}

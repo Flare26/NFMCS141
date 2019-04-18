@@ -1,5 +1,5 @@
 //Nathan Frazier coins client
-package Methods;
+package methodpractice;
 
 public class CoinsClient {
 

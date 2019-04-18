@@ -1,7 +1,7 @@
 /* WeatherForecast Client
    Anderson, Franceschi
 */
-package Methods;
+package methodpractice;
 public class WeatherForecastClient
 {
   public static void main( String [] args )

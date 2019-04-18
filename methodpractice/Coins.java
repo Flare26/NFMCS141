@@ -1,6 +1,6 @@
 //Nathan Frazier
 
-package Methods;
+package methodpractice;
 
 import java.text.DecimalFormat;
 

@@ -3,7 +3,7 @@
    
    Nathan Frazier
 */
-package Methods;
+package methodpractice;
 public class Airport
 {
   // 1. ***** Define the instance variables  *****
