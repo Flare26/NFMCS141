@@ -74,6 +74,10 @@ int num = 0x3e80;
 	   double [] a = { 12.5, 48.3, 65.0 } ; 
 	   System.out.println( a[1] );
 	   
-	   int bucky [] = new int  [20];
+	   int bucky [][] =
+	   { {0,1,2,3},  {4,3,8,1}};
+	   System.out.println(bucky[1][2]);
+	   String chi = "Chicago";
+	   System.out.println(chi.length());
 }
 }

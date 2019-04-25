@@ -6,7 +6,7 @@ public class PCgame extends Game {
 	public PCgame(int ram, double ghz, double hdd)
 	{
 		super(ram, ghz, hdd);
-		System.out.println("Child constructor called! Passed parameters.");
+		System.out.println("[PCgame] Child constructor called! Passed parameters.");
 	}
 
 }

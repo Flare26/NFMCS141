@@ -1,4 +1,4 @@
-//Nathan Frazier P684 #36
+//Nathan Frazier P684 #36 & #38
 package inheritancepractice;
 
 public class Game {
@@ -16,12 +16,15 @@ public Game(int ram, double ghz, double hdd)
 
 public String toString()
 {
-	return "[inherited01] | RAM : " + minRAM + " | Processor Speed : " + minGHz + " GHz | Storage Space : " + minHDD + " MB";
+	return "[SUPER] | RAM : " + minRAM + " | Processor Speed : " + minGHz + " GHz | Storage Space : " + minHDD + " MB";
 }
 
+/*
 public String specString() //So I can still call an inherited method in Sportsgame since we wrote our own tostring
 {
 	return "[inherited02] | RAM : " + minRAM + " | Processor Speed : " + minGHz + " GHz | Storage Space : " + minHDD + " MB";
 }
+*/
+
 }
 

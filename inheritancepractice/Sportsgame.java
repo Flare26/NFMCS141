@@ -8,7 +8,7 @@ public class Sportsgame extends Game {
 	public Sportsgame (int ram, double ghz, double hdd, boolean tie, boolean team)
 	{
 		super(ram, ghz, hdd);
-		System.out.println("Sportsgame constructor called! Passed parameters.");
+		System.out.println("[Sportsgame] child constructor called! Passed parameters.");
 		cantie = tie;
 		teams = team;
 		
@@ -16,24 +16,24 @@ public class Sportsgame extends Game {
 	
 	public String toString()
 	{
-		System.out.println("Super toString() overwritten!");
+		System.out.println("[Sportsgame] Super toString() overwritten!");
 		
 		String msg = "null" ;
 		String msg2 = "null" ;
 		
 		 if (cantie)
-			  msg = "Ties ARE allowed";
-		 else
-			 msg = "Ties are NOT allowed";
+			 	msg = ">Ties ARE allowed";
+		 	else
+		 		msg = ">Ties are NOT allowed";
 			 
 		if (teams)
-			msg2 = "Teams ARE allowed";
+				msg2 = ">Teams ARE allowed";
 			else
-				msg2 = "Teams are NOT allowed";
+				msg2 = ">Teams are NOT allowed";
 			
 		 
 		 
-		return this.specString() + "\n" + msg + "\n" + msg2;
+		return super.toString() + "\n" + msg + "\n" + msg2;
 	}
 
 }

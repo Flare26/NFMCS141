@@ -1,4 +1,5 @@
 //Nathan Frazier P684 #36
+//USE MAINCLIENT INSTEAD
 package inheritancepractice;
 
 public class Gameclientpc {
