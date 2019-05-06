@@ -36,10 +36,10 @@ public class Sumlastcolumn {
 		for ( int i = 0; i < arrayin.length; i++ )
 		{
 			
-		last = arrayin[ i ] [ arrayin[ i ].length - 1];
+			last = arrayin[ i ] [ arrayin[ i ].length - 1];
 		//( arrayin [ arrayin[i].length - 1 ] ) += sum;
 		
-		total += last; // total = total + last
+			total += last; // total = total + last
 		
 		}
 		

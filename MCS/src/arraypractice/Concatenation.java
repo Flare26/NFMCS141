@@ -8,13 +8,10 @@ public class Concatenation {
 		String [] [] ar = { {"Please", "Excuse", "My"},
 				{"Dear", "Aunt Sally"} } ;
 		
-	
 		System.out.println("Concatenation : " + concat(ar));
 	}
-
-
 	
-	
+	//This method takes a 2D string array and, yeah
 	public static String concat(String [] [] array)
 	{
 		String c = "";

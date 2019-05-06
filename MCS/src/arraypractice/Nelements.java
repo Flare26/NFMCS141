@@ -1,5 +1,6 @@
+//Nathan Frazier P595 #71
 package arraypractice;
-
+import java.util.ArrayList;
 public class Nelements {
 
 	public static void main(String[] args) {
@@ -10,40 +11,34 @@ public class Nelements {
 				{'k'},
 				{'l'}
 		};
-		columns(2, array);
+		System.out.println("Returned value ==> " + columns(2, array) );
+		
 	}
 //find a way to return column lengths 
 // add 1 to an array that keeps track of column length then search the array for how many = n
-	
-/*
- * 
-		int maxrowlength = 0;
-		for (int i = 0; i < a.length; i++)
-		{
-			if (a[i].length > maxrowlength)
-				maxrowlength = a[i].length;
- */
-	public static int columns(int n, char [] [] a)
+//So store the lengths in an array list. The number of columns must be how many rows >= n.
+	public static int columns(int n, char [] [] array)
 	{ 
-		
+		ArrayList<Integer> rl = new ArrayList<Integer>();
 		System.out.println("Looking for # of columns with 'n' elements where n = " + n);
-		int [] columlengths = new int [a.length];
-		int currentrow = 0;
-		int elements = 0;
-		do {
-		for (int e = 0; e < a[currentrow].length; e++) //counts elements in current row
+		
+		for ( char [] row : array )
 		{
-			elements++;
-		}
-		System.out.println("Elements for row " + currentrow + " = " + elements);
-		columlengths[currentrow] = elements; //store count of elements for that row in temp array
-		elements = 0; //resets element count per row
-		currentrow++; //move to next row 
-		} while (currentrow < a.length); //while the current row is less than a.length
-			
-		return 0;
+			System.out.println(row);
+			rl.add(row.length);
 		}
 		
+		int c = 0;
+		
+		for ( int i = 0; i < rl.size(); i++)
+		{
+			if ( (rl.get(i) - n) >= 0)
+				c++;	
+		}
+		System.out.println("Array List with row lengths : " + rl.toString());
+		System.out.println("Columns with " + n + " elements = " + c);
+		return c;
 	}
+}
 	
 
