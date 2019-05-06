@@ -8,6 +8,8 @@ public class Arraylists {
 	
 	public static void main ( String [] args )
 	{
+		ArrayList<Double> a;
+		a = new ArrayList<Float>;
 		System.out.println("please enter an array of number, type 0 when finished");
 		int in = seebot.nextInt();
 		

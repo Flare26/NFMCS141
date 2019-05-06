@@ -3,6 +3,14 @@ package shipgame;
 public class Testclient {
 
 	public static void main(String[] args) {
+		
+		Menu
+
+	}
+
+	
+/*	private void foo()
+	{
 		Inputhandler handler = new Inputhandler();
 		Player TL38 = new Player(10, 1, 1, 15.0, 0.0); //hull lvl wep shield exp
 		System.out.println(TL38.toString());
@@ -19,6 +27,5 @@ public class Testclient {
 			 Combat combatinstance = new Combat();
 			 combatinstance.runCombat();
 		}
-	}
-
+	} */
 }

@@ -7,7 +7,7 @@ static Scanner seebot = new Scanner(System.in);
 
 private static int loopoutput;
 
-public static int getInput()
+public int getInput()
 {
 	String input = seebot.next();
 

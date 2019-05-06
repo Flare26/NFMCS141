@@ -10,9 +10,19 @@ private enum Seasons { Winter, Spring, Summer, Fall } ;
 	
 
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public static void main(String[] args) { //Access each element in multidimensional
+		int product=1;
+	int [] [] array = { {5, 5}, {2, 1} };
+	product = 1;
+	for ( int[] item : array )
+	{
+		for ( int i : item )
+		{
+			//System.out.println(i);
+			product *= i;
+		}
+	}
+	System.out.println(product);
 
 		
 		

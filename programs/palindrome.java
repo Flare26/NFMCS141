@@ -10,7 +10,7 @@ package programs;
 	        Scanner seebot = new Scanner(System.in);
 	        System.out.println("Enter a phrase you believe to be a palindrome:");
 	        String str = seebot.nextLine();
-	        
+	        seebot.close();
 	        if(isPalindrome(str))
 	            System.out.println(str + " is a palindrome!");
 	        else
