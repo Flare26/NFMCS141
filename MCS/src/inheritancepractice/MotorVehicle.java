@@ -18,5 +18,10 @@ public class MotorVehicle extends Vehicle {
 		this.HP = this.VL * this.wheels;
 		return this.HP;
 	}
+	
+	public String toString()
+	{
+		return super.toString() + " [Horsepower = " + HP + "]";
+	}
 
 }
