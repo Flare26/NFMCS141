@@ -12,7 +12,7 @@ public class Combat {
 		{
 		int choice = 1337;
 		printCombatdisplay();
-		choice = Inputhandler.getInput();
+		//choice = Inputhandler.getInput();
 		
 		
 		

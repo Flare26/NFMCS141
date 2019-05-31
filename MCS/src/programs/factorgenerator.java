@@ -3,8 +3,11 @@ package programs;
 import java.util.Scanner;
 public class factorgenerator {
 
+	private static Scanner seebot;
+	private static int a;
+
 	public static void main(String[] args) {
-		Scanner seebot = new Scanner(System.in);
+		seebot = new Scanner(System.in);
 		System.out.println("Enter an integer to find it's factors: ");
 		while (! seebot.hasNextInt()) {
 			String garbage = seebot.nextLine();
@@ -13,7 +16,7 @@ public class factorgenerator {
 	
 		int input = Math.abs(seebot.nextInt());
 		int count = 1;
-		int a = input;
+		a = input;
 		
 		System.out.println("Calculating...");
 		do {

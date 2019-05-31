@@ -4,7 +4,7 @@ public class Testclient {
 
 	public static void main(String[] args) {
 		
-		Menu
+
 
 	}
 

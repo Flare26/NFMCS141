@@ -1,5 +1,6 @@
 package programs;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
@@ -7,6 +8,7 @@ import java.util.stream.Stream;
 public class Scratch2 {
 private enum Seasons { Winter, Spring, Summer, Fall } ;
 	private char letterGrade;
+	private static Stream<String> dataStream;
 	public void Grade( char lg )
 	{
 		letterGrade = lg;
@@ -15,7 +17,12 @@ private enum Seasons { Winter, Spring, Summer, Fall } ;
 
 	
 	public static void main(String[] args) { //Access each element in multidimensional
-		Stream<String> dataStream = Files.lines(Paths.get("info.txt"));	
+		try {
+			dataStream = Files.lines(Paths.get("info.txt"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	int product=1;
 	int [] [] array = { {5, 5}, {2, 1} };
 	product = 1;

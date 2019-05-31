@@ -3,10 +3,12 @@ package programs;
 import java.util.Scanner;
 import java.text.*;
 public class SwitchCalc2 {
+	private static Scanner seebot;
+
 	public static void main(String[] args) {
 double fp1, fp2;
 String operation;
-Scanner seebot = new Scanner(System.in);
+seebot = new Scanner(System.in);
 //sets up output format:
 DecimalFormat twoDecimals = new DecimalFormat( "#,###,###.##");
 //Welcome message
