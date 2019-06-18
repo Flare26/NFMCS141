@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-
+//FIRST ATTEMPT AT API REQUESTING
 import org.apache.commons.codec.binary.Base64;
 
 public abstract class APIreq {
