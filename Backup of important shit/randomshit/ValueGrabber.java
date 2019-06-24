@@ -6,24 +6,26 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Iterator;
-import java.util.Scanner;
-import java.util.Set;
-
-//Nathan Frazier Authorization token generator
-//Spits out the syntax required for the freshdesk API, but base64 encoded
 
 import org.apache.commons.codec.binary.Base64;
 import org.json.*;
- 
-public class Auth {
+
+public class ValueGrabber {
+	
+	public static void main(String [] args)
+	{
+		ValueGrabber valuegrabber = new ValueGrabber();
+		valuegrabber.setEncodedKey();
+		valuegrabber.assetRequest("A05550");
+		
+	}
 
 	private String apikey64;
+	private JSONArray apiobj;
 	
-	public Auth()
+	public String getKeyVal (String inputline, JSONArray apireturn)
 	{
-		setEncodedKey();
-		//apikey64 is set as soon as program loads
+		return "whososo";
 	}
 	
 	private void setEncodedKey()
@@ -35,17 +37,18 @@ public class Auth {
 		apikey = new String(encodedkey); //Takes array and invokes toString()
 		System.out.println("Encoded auth string : " + apikey + 
 				"\nKey encoded and set succesfully!");
-		apikey64 = apikey;
+		this.apikey64 = apikey;
 	}
 	
-	public String assetRequest(String T) throws Exception
+	private String assetRequest(String T)
 	{
+		
+	String keystr = "Just us goons!";
 	//throw asset tag into constructor
-	String key64 = apikey64;
-	String keystr = "Just us goons!";	
+    String key64 = this.apikey64;
     System.out.println("key64 = " + key64);
-    
     String tag = T;
+    try {        
         URL fresh12 = new URL("https://johnsburg12.freshservice.com/api/v2/assets?query=\"asset_tag:" + tag +"\""); 
         // Double quote needed around asset_tag above, it reads v2/assets?query="asset_tag:tag" to the server else you get error 400
         System.out.println("Opening URLConnection & setting request properties...\n");
@@ -56,18 +59,31 @@ public class Auth {
         BufferedReader in = new BufferedReader(new InputStreamReader(apiconn.getInputStream()));
         System.out.println("Created BufferedReader");
         String inputLine = in.readLine();
-        String inline = inputLine;
-        System.out.println("text response = " + inputLine);
+        System.out.println("inputLine = " + inputLine);
         
         //^ The API sends back a json array within a json array.
         JSONObject parsed = new JSONObject(inputLine);
-        return inputLine;
-}
-    
-}//end of class
+        String value = parsed.getString("");
+        System.out.println(value);
+        JSONArray jsonarray = parsed.getJSONArray("assets");
+       // Obj value2 = jsonarray.getString("display_id");
+        System.out.println(jsonarray);
+        System.out.println(value);
+        
 
-//Nathan Frazier
-/*
- *This class takes my personal Freshworks API key and encodes it to the required base64 format.
- *It then sends the API key along with a request URL to the API, and parses the returned JSON object. 
- */
+        
+    }//end of try
+    catch (FileNotFoundException e) {
+        e.printStackTrace();
+        return "ERROR!";
+    } catch (IOException e) {
+        e.printStackTrace();
+        return "ERROR!";
+    } catch (JSONException e) {
+    	e.printStackTrace();
+    }
+    
+	return keystr;  
+}
+	
+}
