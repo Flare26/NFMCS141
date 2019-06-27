@@ -11,11 +11,19 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JTextPane;
+import javax.swing.JLabel;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import javax.swing.JPanel;
 
 public class Windowpane {
 
 	private JFrame frame;
 	private JTextField txtTypescanAValid;
+	private JPanel panel;
+	private JTextPane txtpnNathanFrazier;
+	private JTextPane txtpnAssetGrabber;
+	private JLabel lblTypescanJAsset;
 
 	/**
 	 * Launch the application.
@@ -61,15 +69,15 @@ public class Windowpane {
 		btnINeedTo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "That really hurt!");
-				String asset = txtTypescanAValid.getText();
 				Auth authorize = new Auth();
 				try {
-					String id = "null";
 					String responsetext = authorize.assetRequest(txtTypescanAValid.getText());
 					
 					String name =(String) JSONNY.sift(responsetext, "name");
 					String assignedto =(String) JSONNY.sift(responsetext, "user_id");
-					JOptionPane.showMessageDialog(null, "name : " + name + "\nAssigned to : " + assignedto);
+					String usetype =(String) JSONNY.sift(responsetext, "usage_type");
+					JOptionPane.showMessageDialog(null, "Name : " + name + "\nAssigned to : " + assignedto
+					+ "\nUsage type : " + usetype);
 				
 				} catch (Exception g) {
 					
@@ -79,7 +87,21 @@ public class Windowpane {
 				
 			}
 		});
-		frame.getContentPane().add(btnINeedTo, BorderLayout.CENTER);
+		frame.getContentPane().add(btnINeedTo, BorderLayout.SOUTH);
+		
+		panel = new JPanel();
+		frame.getContentPane().add(panel, BorderLayout.EAST);
+		
+		lblTypescanJAsset = new JLabel("Type/Scan J12 Asset # in above field ^ ");
+		panel.add(lblTypescanJAsset);
+		
+		txtpnNathanFrazier = new JTextPane();
+		txtpnNathanFrazier.setText("Nathan Frazier");
+		panel.add(txtpnNathanFrazier);
+		
+		txtpnAssetGrabber = new JTextPane();
+		txtpnAssetGrabber.setText("Asset Grabber - v 0.1");
+		panel.add(txtpnAssetGrabber);
 	}
 
 }

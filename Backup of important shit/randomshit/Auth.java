@@ -1,14 +1,10 @@
 package randomshit;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Iterator;
-import java.util.Scanner;
-import java.util.Set;
+
 
 //Nathan Frazier Authorization token generator
 //Spits out the syntax required for the freshdesk API, but base64 encoded
@@ -42,8 +38,7 @@ public class Auth {
 	{
 	//throw asset tag into constructor
 	String key64 = apikey64;
-	String keystr = "Just us goons!";	
-    System.out.println("key64 = " + key64);
+	System.out.println("key64 = " + key64);
     
     String tag = T;
         URL fresh12 = new URL("https://johnsburg12.freshservice.com/api/v2/assets?query=\"asset_tag:" + tag +"\""); 
