@@ -1,18 +1,9 @@
 package randomshit;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.Collection;
-
-import org.apache.commons.codec.binary.Base64;
 import org.json.*;
 public class JSONNY {
 
 	//BELOW METHOD TAKES THE RAW STRING FROM API AND EXTRACTS NESTED LOOP + REQUESTED DATA
-	public static String sift(String responsetxt, String keyword)
+	public static Object sift(String responsetxt, String keyword)
 	{
 		System.out.println("Feeding responsetext and keyword to JSONNY...");
 
@@ -23,12 +14,20 @@ public class JSONNY {
 				System.out.println("nested array is " + jsonArray.get(i));
 			}
 			System.out.println("Pulling data from nested array...");
-			
-			JSONObject pullnest = (JSONObject) jsonArray.get(0);
+			JSONObject targetobj = (JSONObject) jsonArray.get(0);
 			
 			System.out.println("New object pullnest created from data...");
 			
-			System.out.println("requested data acquired! " + pullnest.get(keyword));
-			return pullnest.getString(keyword);
+			if (keyword == null)
+				keyword = "EMPTYKEYWORD";
+			
+			//HOW TO HANDLE NULL VALUES
+			//NULL VALUES NEED TO BE CHECKED FOR IF AT ALL POSSIBLE
+			Object o = targetobj.get(keyword);
+			if (JSONObject.NULL.equals(o))
+				o = (String) "NO VALUE";
+				
+			System.out.println("..requested data acquired!\n" + o.toString());
+			return o;
 			}
 	}
