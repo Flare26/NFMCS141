@@ -1,4 +1,8 @@
-
+//Nathan Frazier Authorization token generator - alpha
+/*
+ * This class encodes my API key and can return raw api strings with .assetRequest()
+ * .getRequester returns an object 'requester' with the users information. user_id needed as a long
+ */
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -6,8 +10,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 
-//Nathan Frazier Authorization token generator
-//Spits out the syntax required for the freshdesk API, but base64 encoded
+
 
 import org.apache.commons.codec.binary.Base64;
 //import org.json.*;
@@ -43,21 +46,48 @@ public class Auth {
     String tag = T;
         URL fresh12 = new URL("https://johnsburg12.freshservice.com/api/v2/assets?query=\"asset_tag:" + tag +"\""); 
         // Double quote needed around asset_tag above, it reads v2/assets?query="asset_tag:tag" to the server else you get error 400
-        System.out.println("Opening URLConnection & setting request properties...\n");
+        System.out.println("Opening URLConnection & setting request properties...\n URL : " + fresh12.toString());
         URLConnection apiconn = fresh12.openConnection();
         //^ Create url object then create a connection object using the URL.openConnection()
         
         apiconn.setRequestProperty("Authorization", "Basic" + " " + key64); //Must follow Basic with the key
         BufferedReader in = new BufferedReader(new InputStreamReader(apiconn.getInputStream()));
-        System.out.println("Created BufferedReader");
+        System.out.println("Created BufferedReader.");
         String inputLine = in.readLine();
         //String inline = inputLine;
-        System.out.println("text response = " + inputLine);
-        
+        System.out.println("String from API = " + inputLine);
+        return inputLine;
         //^ The API sends back a json array within a json array.
         //JSONObject parsed = new JSONObject(inputLine);
-        return inputLine;
+        
 }
+	
+	public String getRequester(long UID) throws Exception {
+		
+		String key64 = apikey64;
+		System.out.println("key64 = " + key64);
+	    
+	    long userid = UID;
+	        URL fresh12 = new URL("https://johnsburg12.freshservice.com/api/v2/requesters/" + userid); 
+	        // Double quote needed around asset_tag above, it reads v2/assets?query="asset_tag:tag" to the server else you get error 400
+	        System.out.println("Opening URLConnection & setting request properties...\n");
+	        URLConnection apiconn = fresh12.openConnection();
+	        //^ Create url object then create a connection object using the URL.openConnection()
+	        
+	        apiconn.setRequestProperty("Authorization", "Basic" + " " + key64); //Must follow Basic with the key
+	        BufferedReader in = new BufferedReader(new InputStreamReader(apiconn.getInputStream()));
+	        System.out.println("Created BufferedReader");
+	        String responsetext = in.readLine();
+	        //String inline = inputLine;
+	        System.out.println("text response = " + responsetext);
+	        
+	        //^ The API sends back a json array within a json array.
+	        //JSONObject parsed = new JSONObject(inputLine);
+	        //So this function returns an object in the form of a string (responsetext)
+	        return responsetext;
+	
+	}
+	
     
 }//end of class
 
