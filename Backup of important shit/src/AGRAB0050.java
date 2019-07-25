@@ -19,7 +19,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class Windowpane {
+public class AGRAB0050 {
 
 
 	private JFrame frame;
@@ -35,7 +35,7 @@ public class Windowpane {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Windowpane window = new Windowpane();
+					AGRAB0050 window = new AGRAB0050();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +47,7 @@ public class Windowpane {
 	/**
 	 * Create the application.
 	 */
-	public Windowpane() {
+	public AGRAB0050() {
 		initialize();
 	}
 	

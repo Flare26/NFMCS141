@@ -13,7 +13,9 @@ import java.net.URLConnection;
 
 
 import org.apache.commons.codec.binary.Base64;
+import org.json.JSONArray;
 //import org.json.*;
+import org.json.JSONObject;
  
 public class Auth {
 
@@ -88,6 +90,37 @@ public class Auth {
 	
 	}
 	
+	public String getOwnedAssets(long UID) throws Exception {
+		String key64 = apikey64;
+		URL fresh12 = new URL("https://johnsburg12.freshservice.com/api/v2/assets?query=\"user_id:" + UID +"\""); 
+        // Double quote needed around asset_tag above, it reads v2/assets?query="asset_tag:tag" to the server else you get error 400
+        System.out.println("Opening URLConnection & setting request properties...\n");
+        URLConnection apiconn = fresh12.openConnection();
+        //^ Create url object then create a connection object using the URL.openConnection()
+        
+        apiconn.setRequestProperty("Authorization", "Basic" + " " + key64); //Must follow Basic with the key
+        BufferedReader in = new BufferedReader(new InputStreamReader(apiconn.getInputStream()));
+        System.out.println("Created BufferedReader");
+        String responsetext = in.readLine();
+        //String inline = inputLine;
+        System.out.println("text response = " + responsetext);
+        return responsetext;
+	}
+	
+	public String getAssetFromName(String JID) throws Exception
+	{
+		String key64 = apikey64;
+		URL fresh12 = new URL("https://johnsburg12.freshservice.com/api/v2/requesters?email=" + JID + "@johnsburg12.org");
+		System.out.println("Opening URLConnection & setting request properties...\n");
+		URLConnection apiconn = fresh12.openConnection();
+		apiconn.setRequestProperty("Authorization", "Basic" + " " + key64);
+		BufferedReader in = new BufferedReader(new InputStreamReader(apiconn.getInputStream()));
+		JSONObject student = new JSONObject(in.readLine());
+		JSONArray jsonarray = student.getJSONArray("requesters");
+		String freshID = jsonarray.getString(0);
+		return freshID;
+		
+	}
     
 }//end of class
 
