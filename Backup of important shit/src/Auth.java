@@ -87,7 +87,31 @@ public class Auth {
 	        //JSONObject parsed = new JSONObject(inputLine);
 	        //So this function returns an object in the form of a string (responsetext)
 	        return responsetext;
+	}
 	
+	public String getAgent(long UID) throws Exception {
+		
+		String key64 = apikey64;
+		System.out.println("key64 = " + key64);
+	    
+	    long userid = UID;
+	        URL fresh12 = new URL("https://johnsburg12.freshservice.com/api/v2/agents/" + userid); 
+	        // Double quote needed around asset_tag above, it reads v2/assets?query="asset_tag:tag" to the server else you get error 400
+	        System.out.println("Opening URLConnection & setting request properties...\n");
+	        URLConnection apiconn = fresh12.openConnection();
+	        //^ Create url object then create a connection object using the URL.openConnection()
+	        
+	        apiconn.setRequestProperty("Authorization", "Basic" + " " + key64); //Must follow Basic with the key
+	        BufferedReader in = new BufferedReader(new InputStreamReader(apiconn.getInputStream()));
+	        System.out.println("Created BufferedReader");
+	        String responsetext = in.readLine();
+	        //String inline = inputLine;
+	        System.out.println("text response = " + responsetext);
+	        
+	        //^ The API sends back a json array within a json array.
+	        //JSONObject parsed = new JSONObject(inputLine);
+	        //So this function returns an object in the form of a string (responsetext)
+	        return responsetext;
 	}
 	
 	public String getOwnedAssets(long UID) throws Exception {
@@ -107,7 +131,7 @@ public class Auth {
         return responsetext;
 	}
 	
-	public String getAssetFromName(String JID) throws Exception
+	public long getUIDfromJID(String JID) throws Exception
 	{
 		String key64 = apikey64;
 		URL fresh12 = new URL("https://johnsburg12.freshservice.com/api/v2/requesters?email=" + JID + "@johnsburg12.org");
@@ -116,10 +140,13 @@ public class Auth {
 		apiconn.setRequestProperty("Authorization", "Basic" + " " + key64);
 		BufferedReader in = new BufferedReader(new InputStreamReader(apiconn.getInputStream()));
 		JSONObject student = new JSONObject(in.readLine());
+		System.out.println(student.toString());
 		JSONArray jsonarray = student.getJSONArray("requesters");
-		String freshID = jsonarray.getString(0);
-		return freshID;
+		System.out.println(jsonarray.toString());
+		JSONObject jobj = jsonarray.getJSONObject(0);
 		
+		long UID = jobj.getLong("id");
+		return UID;
 	}
     
 }//end of class

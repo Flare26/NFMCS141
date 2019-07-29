@@ -21,7 +21,7 @@ import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Windowpane2 {
+public class AGRAB0080 {
 
 	private boolean jmode = false;
 	private boolean staffmode = false; //a07440 - matt border
@@ -36,7 +36,7 @@ public class Windowpane2 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Windowpane2 window = new Windowpane2();
+					AGRAB0080 window = new AGRAB0080();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +49,7 @@ public class Windowpane2 {
 	/**
 	 * Create the application.
 	 */
-	public Windowpane2() {
+	public AGRAB0080() {
 		initialize();
 	}
 	
