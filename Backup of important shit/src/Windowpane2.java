@@ -20,9 +20,11 @@ import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class Windowpane2 {
-
+	
+	//private long dispID = -420L;
 	private boolean jmode = false;
 	private boolean staffmode = false; //a07440 - matt border
 	private JFrame frame;
@@ -51,6 +53,7 @@ public class Windowpane2 {
 	 */
 	public Windowpane2() {
 		initialize();
+		
 	}
 	
 	
@@ -98,16 +101,26 @@ public class Windowpane2 {
 			
 			String results = "";
 			for (int i = 0; i < apiarray.length(); i++) {
-				//JOptionPane.showMessageDialog(null, "Found : " + objectArray[i].getString("name"));
-				String name = objectArray[i].getString("name");
-				String tag = objectArray[i].getString("asset_tag");
 				String requester = "[NO REQUESTER]";
+				String email = "[NO EMAIL]";
+				Object UID = "[NO ID]";
+				String name = "[NO NAME]";
+				String tag = "[NO A#]";
+				String updatedat = "[UNKNOWN DATE]";
+				String parentlocation = "[UNKNOWN LOCATION]";
+				String desc = "[NO DESCRIPTION]";
+				
+				//ASSET FIELDS ARE FOUND HERE
+				long displayID = objectArray[i].getLong("display_id");
+				name = objectArray[i].getString("name");
+				tag = objectArray[i].getString("asset_tag");
+				 
+				//JOptionPane.showMessageDialog(null, "Found : " + objectArray[i].getString("name"));
 				
 				//This marks the beginning of checking to see if there is a requester...
 				boolean noid = objectArray[i].get("user_id").equals(null);
-				
 				//checks user_id of current object in a list of objects and is true if null
-				Object UID = "[NO ID]";
+				
 				if (! noid)
 					//only true if the api sends back a user_id
 				{
@@ -133,7 +146,7 @@ public class Windowpane2 {
 						reqobj = apireturn.getJSONObject("agent");
 					}
 					
-					String email = "[NO EMAIL]";
+					
 					try { email = reqobj.getString("primary_email");}
 					catch(JSONException e) {
 						System.out.println("'primary_email' NOT FOUND, searching simply 'email'...");
@@ -148,22 +161,29 @@ public class Windowpane2 {
 				}
 				
 				boolean nodesc = objectArray[i].get("description").equals(null);
-				String desc = "[NO DESCRIPTION]";
+			
 				
 				if (! nodesc)
 					desc = objectArray[i].getString("description");
 				
-				String updatedat = "[UNKNOWN DATE]";
+				
 				boolean nodate = objectArray[i].get("assigned_on").equals(null);
 				
 				if (! nodate)
 				 updatedat = (String) objectArray[i].get("updated_at");
 				
+				//Instance LocationParse
+				LocationParse locationParse = new LocationParse();
+				
+				parentlocation = locationParse.getAssignedSchool(displayID);
+				
 				results +=
-						 "\nAssigned to : " + requester
-						+ "\nAsset name : " + name
-						+ "\nA# : " + tag
+						 "\nAssigned : " + requester //requester method can be consolidated
+						+"\nA# : " + tag
+						+ "\n\nAsset name : " + name
+						+ "\nParent Location : " + parentlocation
 						+ "\nUID : " +  UID
+						+ "\nDISPLAY ID : " + displayID
 						+"\nLast updated : " + updatedat
 						+"\n\n* : " + desc 
 						+ "\n----------------------\n";
@@ -171,7 +191,7 @@ public class Windowpane2 {
 			} //end of enhanced for loop
 			textArea.setText("Showing ("+count+") result(s)!\n" + results);
 			if (count == 0 && textField.getText().toUpperCase().charAt(0) == 'J')
-				JOptionPane.showMessageDialog(null, "To search a J-ID, check 'enable J-ID mode'");
+				JOptionPane.showMessageDialog(null, "No result!!");
 			
 			//Output values to textArea;
 			//...end of search button functionality	
@@ -193,11 +213,13 @@ public class Windowpane2 {
 		JScrollPane scrollPane = new JScrollPane();
 		frame.getContentPane().setLayout(groupLayout);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		textArea.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		textArea.setEditable(false);
 		textArea.setText("J12 Asset/JID Search v0.8 beta - Nathan Frazier");
 		scrollPane.setViewportView(textArea);
 		
 		JButton btnSearch = new JButton("SEARCH");
+		btnSearch.setFont(new Font("Comic Sans MS", Font.PLAIN, 11));
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					searchFunction(jmode);

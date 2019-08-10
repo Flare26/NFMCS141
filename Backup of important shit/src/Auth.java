@@ -19,12 +19,17 @@ import org.json.JSONObject;
  
 public class Auth {
 
-	private String apikey64;
+	private static String apikey64;
 	
 	public Auth()
 	{
 		setEncodedKey();
 		//apikey64 is set as soon as program loads
+	}
+	
+	public static String getAPIKey()
+	{
+		return apikey64;
 	}
 	
 	private void setEncodedKey()
@@ -61,7 +66,6 @@ public class Auth {
         return inputLine;
         //^ The API sends back a json array within a json array.
         //JSONObject parsed = new JSONObject(inputLine);
-        
 }
 	
 	public String getRequester(long UID) throws Exception {
@@ -147,6 +151,19 @@ public class Auth {
 		
 		long UID = jobj.getLong("id");
 		return UID;
+	}
+	
+	public static JSONObject getCustomObject(String argument) throws Exception
+	{
+		String key64 = apikey64;
+		URL fresh12 = new URL("https://johnsburg12.freshservice.com/api/v2/" + argument);
+		System.out.println("Sent request to "+argument+" & setting request properties...\n");
+		URLConnection apiconn = fresh12.openConnection();
+		apiconn.setRequestProperty("Authorization", "Basic" + " " + key64);
+		BufferedReader in = new BufferedReader(new InputStreamReader(apiconn.getInputStream()));
+		JSONObject apiobj = new JSONObject(in.readLine());
+		System.out.println(apiobj.toString());
+		return apiobj; //Base object with nested json still inside.
 	}
     
 }//end of class
