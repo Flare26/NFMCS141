@@ -7,10 +7,15 @@ import org.json.JSONObject;
 //API URL NODE : "https://johnsburg12.freshervice.com/api/v2/" + apiEndpoint
 // API URL ENDPOINT : apiNode + "assets/displayID"
 //AUTH SCHEME : username:password || apikey:x
+
+/*
+ * Program is returning parent location and this updates actual location
+ * if location is updated here, program wont yet return the new location, only the new parent location
+ */
 public class DummyThiccc {
 	
-	static String field = "description"; //changeable
-	static String value = "";
+	static String field = "location_id"; //changeable
+	static Object value = "";
 	static long displayID = 0;
 	//3420 for reference ^
 	static Scanner seebot = new Scanner(System.in);
@@ -24,16 +29,22 @@ public class DummyThiccc {
 		displayID = seebot.nextInt();
 
 		System.out.println("Thank you! displayID = " + displayID);
-		
+		//A
 		try {
 			//create new Auth to generate dev API key
 		Auth auth = new Auth();
 		asset = auth.getCustomObject("assets/"+displayID+".json");
 		details = (JSONObject) asset.get("asset");
-		value = details.getString(field);
-		System.out.println("Enter new data : {");
+		value = details.get(field);
+		System.out.println("Sel Loc: [1] IN REPAIR [2] DEFAULT");
 		Scanner scan = new Scanner(System.in);
-		String in = scan.nextLine();
+		long in;
+		if (scan.nextInt() == 1)
+		{
+			in = (Long) 5000349147L;
+		} else {
+			in = (Long) 5000178840L;
+		}
 		scan.close();
 		
 		//Update local copy & delete fields that throw errors
