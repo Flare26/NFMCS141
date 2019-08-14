@@ -31,7 +31,7 @@ import java.util.Scanner;
 @SuppressWarnings("resource")
 public class ApachePut {
 
-	private static LocationParse locationParse = new LocationParse();
+	private static LocationHandler locationParse = new LocationHandler();
 	private static String dispID = null;
 	private static Long DID = 3420L; //matt 
 	private static String apiToken = "29D3QS0ZKyjLzCef3LB";
